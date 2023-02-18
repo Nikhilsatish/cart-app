@@ -4,7 +4,7 @@ import Navbar from './Navbar';
 
 class App extends React.Component {
 
-  constructor () {
+  constructor() {
     super();
     this.state = {
       products: [
@@ -93,7 +93,7 @@ class App extends React.Component {
 
     return cartTotal;
   }
-  render () {
+  render() {
     const { products } = this.state;
     return (
       <div className="App">
@@ -104,7 +104,7 @@ class App extends React.Component {
           onDecreaseQuantity={this.handleDecreaseQuantity}
           onDeleteProduct={this.handleDeleteProduct}
         />
-        <div style={ {padding: 10, fontSize: 20} }>TOTAL: {this.getCartTotal()} </div>
+        <div style={{ padding: 10, fontSize: 20 }}>TOTAL: {this.getCartTotal()} </div>
       </div>
     );
   }
