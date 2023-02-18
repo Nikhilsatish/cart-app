@@ -62,7 +62,6 @@ class App extends React.Component {
   }
   handleDeleteProduct = (id) => {
     const { products } = this.state;
-
     const items = products.filter((item) => item.id !== id); // [{}]
 
     this.setState({
@@ -72,7 +71,6 @@ class App extends React.Component {
 
   getCartCount = () => {
     const { products } = this.state;
-
     let count = 0;
 
     products.forEach((product) => {
