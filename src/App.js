@@ -107,6 +107,25 @@ class App extends React.Component {
     return cartTotal;
   }
 
+
+  addProducts = () => {
+    this.db
+      .collection("products")
+      .add({
+        title: 'Tv',
+        price: 1000,
+        qty: 1,
+        img: ''
+      })
+      .then((docRef) => {
+        console.log('products added successfully', docRef);
+      })
+      .catch((err) => {
+        console.log('Error', err);
+      })
+  }
+  
+
   render() {
     const { products, loading } = this.state;
     return (
@@ -119,7 +138,8 @@ class App extends React.Component {
           onDecreaseQuantity={this.handleDecreaseQuantity}
           onDeleteProduct={this.handleDeleteProduct}
         />
-        <div style={ {padding: 10, fontSize: 20} }>TOTAL: {this.getCartTotal()} </div>
+        {loading  && <h1>Loading Products...</h1>}
+        <div style={{ padding: 10, fontSize: 20 }}>TOTAL: {this.getCartTotal()} </div>
       </div>
     );
   }
