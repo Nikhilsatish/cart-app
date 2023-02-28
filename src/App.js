@@ -19,8 +19,7 @@ class App extends React.Component {
     firebase
       .firestore()
       .collection("products")
-      .get()
-      .then(snapshot => {
+      .onSnapshot((snapshot) => {
         const products = snapshot.docs.map(doc => {
           const data = doc.data();
           data["id"] = doc.id;
