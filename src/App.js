@@ -76,10 +76,17 @@ class App extends React.Component {
   
   handleDeleteProduct = (id) => {
     const { products } = this.state;
-    const items = products.filter((item) => item.id !== id); // [{}]
-    this.setState({
-      products: items
-    })
+    // const items = products.filter((item) => item.id !== id); // [{}]
+    // this.setState({
+    //   products: items
+    // })
+    //Deleting products - firebase
+    const docRef = this.db.collection('products').doc(id);
+    docRef.delete().then(() => {
+      console.log('deleted successfully');
+      }).catch((err) => {
+        console.log('Error deleting', err);
+        })
   }
 
   getCartCount = () => {
@@ -122,7 +129,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Navbar count={this.getCartCount()} />
-        <button onClick={this.addProducts} style={{ padding: 20 }}>Add Products</button>
+        <button onClick={this.addProducts} style={{ padding: 20,cursor: 'pointer' }}>Add Products</button>
         <Cart
           products={products}
           onIncreaseQuantity={this.handleIncreaseQuantity}
