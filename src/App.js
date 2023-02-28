@@ -75,6 +75,7 @@ class App extends React.Component {
     return cartTotal;
   }
 
+
   addProducts = () => {
     this.db
       .collection("products")
@@ -91,6 +92,7 @@ class App extends React.Component {
         console.log('Error', err);
       })
   }
+  
 
   render() {
     const { products, loading } = this.state;
@@ -104,7 +106,7 @@ class App extends React.Component {
           onDecreaseQuantity={this.handleDecreaseQuantity}
           onDeleteProduct={this.handleDeleteProduct}
         />
-        {loading && <h1>Loading Products...</h1>}
+        {loading  && <h1>Loading Products...</h1>}
         <div style={{ padding: 10, fontSize: 20 }}>TOTAL: {this.getCartTotal()} </div>
       </div>
     );
